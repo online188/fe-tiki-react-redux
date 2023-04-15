@@ -1,0 +1,36 @@
+body, html {
+    font-family: $fontmain;
+    font-size: $base-size - 2px;
+    height: 100vh;
+    overflow-y: auto;
+    background: #f8f9fa;
+}
+
+.btn {
+    padding: 0 15px;
+    font-weight: 600;
+    height: 28px !important;
+}
+.modal-header {
+  padding: 10px 15px;
+}
+
+.badge {
+  padding: 3px 5px !important;
+}
+
+thead {
+  background: rgb(58,158,229);
+}
+
+.table th,
+.table td {
+  padding: 0.5rem !important;
+}
+
+div._loading_overlay_wrapper{
+  position: unset;
+  ._loading_overlay_overlay{
+    z-index: 1000000;
+  }
+}

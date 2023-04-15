@@ -1,0 +1,128 @@
+@import "../../../../../assets/css/variable.scss";
+
+.menuAuth{
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .menu-header{
+        display: flex;
+        align-items: center;
+    }
+    .loginAuth{
+        display: flex;
+        justify-content: end;
+    }
+}
+.register, .loginAuth{
+    background:rgb(40,134,234);
+    padding: 15px 30px;
+    display: flex;
+    height: calc(100vh - 85px) !important;
+    .bgRegister, .bgLogin{
+        padding: 0;
+        background-image: url(../../../../../assets/images/bgTiki.jpg);
+        background-repeat: no-repeat;
+        @include phone{
+            display: none;
+        }
+    }
+}
+
+.password{
+    position: relative;
+    cursor: pointer;
+    .showPass{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+}
+
+.avatar{
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 30px;
+    img{
+        width: 25%;
+    }
+    .info{
+        .name{
+            font-weight: 600;
+        }
+        .editProfile{
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: grey;
+        }
+    }
+}
+
+.menu-user{
+    font-weight: 600;
+    font-family: system-ui;
+    .item-menu{
+        color: black;
+        .item{
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            img{
+                width: 10%; 
+            }
+        }
+    }
+
+    .subMenu{
+        padding: 0 25px;
+        .item-menu{
+            div{
+                color: #777777;
+                font-family: system-ui;
+                margin: 5px 0;
+                font-size: 13px;
+            }
+        }
+    }
+
+    .activeSubMenu{
+        div{
+            color: #ff5e00 !important;
+        }
+    }
+}
+.activeMenu{
+    color: #ff5e00 !important;
+}
+
+.statusOrder{
+    display: flex;
+    justify-content: space-between;
+}
+
+.infoProduct{
+    display: flex;
+    justify-content: space-between;
+    .imgProduct{
+        display: flex;
+        gap: 10px;
+    }
+    .detail{
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+}
+
+.totalPrice, .action{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 10px;
+    .price{
+        font-size: 20px;
+    }
+}
+

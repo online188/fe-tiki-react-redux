@@ -1,0 +1,50 @@
+@import '../../../assets/css/variable.scss';
+
+.multimedia{
+    background: white;
+    padding: 10px;
+    .multimedia-header{
+        @include headerAdmin;
+        .mediaTitle{
+            @include titleAdmin;
+        }
+    }
+    .tabMedia{
+        margin-bottom: 15px;
+        @include phone{
+            display: grid;
+            grid-template-columns: 20% 40% 40%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+        @include TabItem ;
+    }
+    .tab-content{
+        .tab-pane{
+            .list-slide{
+                .formSlide{
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 0;
+                    @include phone{
+                        display: flex;
+                        flex-direction: column;
+                    }
+                }
+            }
+            .list-category-special{
+                .formCategory{
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 0;
+                    @include phone{
+                        display: flex;
+                        flex-direction: column;
+                    }
+                }
+            }
+        }
+    }
+}

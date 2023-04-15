@@ -1,0 +1,114 @@
+@import "../../../../../../assets/css/variable.scss";
+
+.tabSuggest{
+    position: sticky;
+    top: 0;
+    .Prod__Suggest{
+        background: white;
+        padding: 10px;
+        border: 1px solid #e6e6e6;
+    }
+    .tab_product {
+        display: flex;
+        justify-content: space-between;
+        background: #e3e3e3;
+        padding: 5px 0;
+        @include phone{
+            display: grid;
+            grid-template-columns: repeat(6,1fr);
+        }
+        @include tablet{
+            display: grid;
+            grid-template-columns: repeat(6,30%);
+            overflow-x: auto;
+        }
+        .item-category{
+            width: 16.2%;
+            background: white !important;
+            cursor: pointer;
+            @include phone{
+                width: 100%;
+                border-right: 1px solid rgb(219, 219, 219);
+            }
+            @include tablet{
+                width: 100%;
+                border-right: 1px solid rgb(219, 219, 219);
+            }
+            a{
+                color: rgb(61, 61, 61);
+                display: flex;
+                gap: 10px;
+                height: 60px ;
+                align-items: center;
+                img{
+                    width: 25px;
+                    height: 25px;
+                }
+                span{
+                    margin-left: 10px;
+                    @include phone{
+                        display: none;
+                    }
+                }
+            }
+            a.activeCatg{
+                border: 2px solid #538aff !important;
+                color: #0051ff;
+            }
+        }
+    }
+}
+
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    @include phone{
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+    .list__prod{
+        width: 16.6%;
+        padding: 10px;
+        cursor: pointer;
+        @include phone{
+            width: 50%;
+        }
+        @include tablet{
+            width: 25%;
+        }
+        p{
+            font-size: 12px;
+        }
+        .price{
+            display: flex;
+            gap: 15px;
+            .badge{
+                @include phone{
+                    display: none;
+                }
+            }
+        }
+    }
+    .list__prod:hover{
+        background: #f5f5f5;
+    }
+}
+
+.list::-webkit-scrollbar { 
+    display: none;  
+}
+
+.view__more, .reset{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 20px;
+    button{
+        width: 20%;
+        @include phone{
+            width: 30%;
+        }
+
+    }
+}

@@ -1,0 +1,54 @@
+@import '../../../../../../assets/css/variable.scss';
+
+.infoAccount{
+    display: flex;
+    @include phone{
+        padding: 10px 0;
+        flex-direction: column;
+    }
+    .menuUser{
+        padding: 15px 0;
+        @include phone{
+            padding: 0 15px;
+        }
+    }
+    .contentUser{
+        background: white;
+        padding: 20px 10px;
+        @include phone{
+        }
+    }
+}
+.myAddress{
+    display: flex;
+    justify-content: space-between;
+}
+
+.infoAddr{
+    @extend .myAddress
+    
+}
+
+.dateBirth{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+    padding: 0;
+}
+
+.gender{
+    display: flex;
+    gap: 15px;
+}
+.infor-user{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.addr-user{
+    margin: 10px 0 15px 0;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(3,1fr);
+}

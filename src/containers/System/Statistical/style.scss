@@ -1,0 +1,33 @@
+@import '../../../assets/css/variable.scss';
+
+.report-statistical{
+    background: white;
+    padding: 10px;
+    .report-header{
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        font-family: system-ui;
+        .reportTitle{
+            margin-left: 10px;
+            font-size: 17px;
+            font-weight: 600;
+            color: rgb(100, 100, 100);
+        }
+    }
+    .tabStatistical{
+        margin-bottom: 15px;
+        @include phone{
+            font-size: 12px;
+            display: grid;
+            grid-template-columns: 45% 35% 30%;
+        }
+        @include TabItem ;
+    }
+    table{
+        @include phone{
+            overflow-x: scroll;
+            display: block;
+        }
+    }
+}

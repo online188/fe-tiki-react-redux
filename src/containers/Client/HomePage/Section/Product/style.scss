@@ -1,0 +1,59 @@
+@import '../../../../../assets/css/variable.scss';
+.product {
+    background: white;
+    text-align: center;
+    padding: 15px 15px 20px 15px;
+    margin: 15px 0 0 0;
+    .headProduct{
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: rgb(212, 0, 0);
+        img{
+            width: 2%;
+            margin-right: 10px;
+        }
+    }
+    .productDetail {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 20px;
+        @include phone {
+            overflow-x: auto;
+            flex-wrap: nowrap !important;
+        }
+        @include tablet{
+            overflow-x: auto;
+            flex-wrap: nowrap !important;
+        }
+        .product--item {
+            width: 20%;
+            padding: 15px;
+            @include phone {
+                width: 50%;
+                padding: 0;
+            }
+            div{
+                cursor: pointer;
+            }
+            .price__prod{
+                display: flex;
+                align-items: center;
+                .price{
+                    font-weight: bold;
+                }
+                .oldPrice{
+                    @include phone{
+                        display: none;
+                    }
+                }
+            }
+        }
+        .product--item:hover {
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px !important;
+        }
+    }
+    .productDetail::-webkit-scrollbar { 
+        display: none;  
+    }
+}

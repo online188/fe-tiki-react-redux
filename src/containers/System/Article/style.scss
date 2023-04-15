@@ -1,0 +1,37 @@
+@import '../../../assets/css/variable.scss';
+
+.articleManage{
+    background: white;
+    padding: 10px;
+    .article-header{
+        @include headerAdmin;
+        .article-title{
+            @include titleAdmin;
+        }
+    }
+    .tabArticle{
+        margin-bottom: 15px;
+        @include phone{
+            display: grid;
+            grid-template-columns: 27% 40% 40%;
+            font-size: 12px;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        @include TabItem ;
+    }
+    .tabArticle::-webkit-scrollbar { 
+        display: none;  
+    }
+    .tab-content{
+        @include phone{
+            padding: 15px 10px;
+        }
+    }
+}
+
+.body-article{
+    height: 80vh;
+    overflow-y: scroll;
+}

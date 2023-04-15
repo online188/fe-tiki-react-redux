@@ -1,0 +1,30 @@
+@import '../../../assets/css/variable.scss';
+
+.productManage{
+    background: white;
+    padding: 10px;
+    .product-head{
+        @include headerAdmin;
+        .productTitle{
+            @include titleAdmin;
+        }
+    }
+    .addProduct{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .action{
+            display: flex;
+            margin-bottom: 10px;
+        }
+    }
+    table{
+        @include phone{
+            overflow-x: scroll;
+            display: block;
+        }
+    }
+    table::-webkit-scrollbar { 
+        display: none;  
+    }
+}

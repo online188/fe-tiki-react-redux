@@ -1,0 +1,45 @@
+@import '../../../assets/css/variable.scss';
+
+.Discount{
+    background: white;
+    padding: 10px;
+    .discountHeader{
+        @include headerAdmin;
+        .discountTitle{
+            @include titleAdmin;
+        }
+    }
+
+    .addDiscount{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .discountContent{
+        padding: 15px 0;
+        .listDiscount{
+            .filterDiscount{
+                display: flex;
+                gap: 10px;
+            }
+            .discountTable{
+                background: white;
+                padding: 15px 0;
+            }
+        }
+    }
+
+    .nav{
+        @include TabItem ;
+    }
+
+    table{
+        @include phone{
+            overflow-x: scroll;
+            display: block;
+        }
+    }
+    table::-webkit-scrollbar { 
+        display: none;  
+    }
+}

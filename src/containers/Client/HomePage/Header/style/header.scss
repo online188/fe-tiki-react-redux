@@ -1,0 +1,370 @@
+@import "../../../../../assets/css/variable.scss";
+.header {
+    background: rgb(1, 127, 255);
+    position: relative;
+    z-index: 1000;
+    @include phone {
+        position: relative;
+        padding: 10px 0;
+        background: #530192;
+    }
+    @include tablet{
+        padding: 10px 0;
+        background: #530192;
+    }
+    .header-tiki{
+        padding: 10px 15px 0 15px;
+    }
+    .container {
+        .row {
+            @include phone {
+                margin: 0;
+                padding-right: 0;
+            }
+            .navbar {
+                justify-content: space-between !important;
+                padding: 0 !important;
+                margin-bottom: 10px;
+                a{
+                    padding-left: 15px;
+                    @include phone{
+                        padding-left: 0;
+                    }
+                    .navbar-brand{
+                        img{
+                            width: 55px;
+                            @include phone {
+                                width: 40px;
+                            }
+                        }
+                    }
+                }
+                .menu_ctg {
+                    cursor: pointer;
+                    @include phone {
+                        display: none;
+                    }
+                    @include tablet{
+                        display: none;
+                    }
+                    .category {
+                        padding: 10px 15px;
+                        span {
+                            font-size: 15px;
+                        }
+                    }
+                }
+                .list__product::before {
+                    content: "";
+                    border-bottom: 0.75rem solid #fff;
+                    border-right: 0.7rem solid transparent;
+                    border-left: 0.7rem solid transparent;
+                    position: absolute;
+                    top: -0.7rem;
+                    left: 3rem;
+                    z-index: 10;
+                    
+                }
+
+                .list__product{
+                    display: flex;
+                    box-shadow: 0 2px 10px 1px grey;
+                }
+
+                .navbar-collapse {
+                    padding: 0;
+                    .navbar-nav {
+                        align-items: center;
+                        padding-right: 0;
+                        .search {
+                            @include phone{
+                                position: sticky;
+                                top: 50px;
+                                margin: 5px 0;
+                            }
+                            input {
+                                border-radius: 2px 0px 0px 2px;
+                                border: 0px;
+                                height: 32px;
+                                @include phone {
+                                    height: 30px;
+                                    border-radius: 5px;
+                                }
+                                @include tablet{
+                                    width: 365px;
+                                }
+                            }
+                            ::placeholder {
+                                @include phone{
+                                    color: #909090 !important;
+                                }
+                            }
+                            .search-form {
+                                position: absolute;
+                                bottom: 0;
+                                .search__info {
+                                    background: white;
+                                    position: absolute;
+                                    z-index: 99;
+                                    height: auto;
+                                    width: 575px;
+                                    box-shadow: rgb(121, 121, 121) 0px 6px 12px 0px;
+                                    padding: 15px;
+                                    .special__prod {
+                                        .catg-special {
+                                            display: grid;
+                                            grid-template-columns: repeat(6,1fr);
+                                            .item-catg{
+                                                img{
+                                                    width: 30%;
+                                                    border-radius: 50%;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                .blur {
+                                    position: fixed;
+                                    inset: 0;
+                                    z-index: -1;
+                                    background: rgba(0, 0, 0, 0.53);
+                                    opacity: 0.3;
+                                }
+                            }
+                            .btn_search {
+                                width: 105px;
+                                @include phone {
+                                    display: none;
+                                }
+                                @include tablet {
+                                    display: none;
+                                }
+                                button {
+                                    background: rgb(13, 92, 182);
+                                    height: 32px !important;
+                                }
+                            }
+                        }
+                        .account {
+                            width: 230px;
+                            cursor: pointer;
+                            color: white;
+                            text-align: center;
+                            @include phone {
+                                display: none;
+                            }
+                            @include tablet{
+                                display: none;
+                            }
+                        }
+
+                        .user-account::before{
+                            content: "";
+                            border-bottom: 2rem solid #fff;
+                            border-right: 0.8rem solid transparent;
+                            border-left: 0.8rem solid transparent;
+                            position: absolute;
+                            top: -1.7rem;
+                            right: 2rem;
+                            z-index: 10;
+                            transition: all 0.3s ease-in-out;
+                        }
+                        
+                        .user-account {
+                            position: absolute;
+                            top: 5rem;
+                            right: 6rem;
+                            background: white;
+                            padding: 10px 0;
+                            width: 250px;
+                            box-shadow: 0 2px 10px 1px grey;
+
+                            .acc-detail{
+                                .item-acc{
+                                    font-family: system-ui;
+                                    font-weight: 600;
+                                    color: rgb(53, 53, 53);
+                                    padding: 5px 15px;
+                                    cursor: pointer;
+                                    border-bottom: 1px solid rgb(236, 236, 236);
+                                    display: flex;
+                                    align-items: center;
+                                    img{
+                                        margin-right: 10px;
+                                        width: 7%;
+                                    }
+                                }
+                                .item-acc:hover {
+                                    background: rgb(243, 243, 243);
+                                }
+                            }
+                        }
+
+                        .cart {
+                            font-size: 14px;
+                            color: white;
+                            cursor: pointer;
+                            margin-right: 10px;
+                            @include phone {
+                                width: 35px;
+                                position: absolute;
+                                top: -2rem;
+                                right: -5px;
+                            }
+
+                            .itemCart{
+                                color: white;
+                                text-align: right;
+                                i{
+                                    .numbCart{
+                                        position: absolute;
+                                        top: -0.9rem;
+                                        left: 01rem;
+                                        
+                                    }
+                                }
+                            }
+                        }
+                        .cart__info {
+                            display: block;
+                            box-shadow: 0 2px 10px 1px grey;
+                            position: absolute;
+                            width: 32rem;
+                            left: 44rem;
+                            top: 4rem;
+                            padding: 15px;
+                            text-align: center;
+                            @include phone{
+                                left: 0rem;
+                                width: 24rem;
+                            }
+                            @include tablet{
+                                left: 11rem;
+                                width: 24rem;
+                            }
+                          
+                            .text-left {
+                                .info {
+                                    .infoCart{
+                                        display: flex;
+                                        justify-content: space-between;
+                                        align-items: flex-start;
+                                        .content {
+                                            line-height: 0;
+                                            small {
+                                                font-size: 14px;
+                                                font-weight: 500;
+                                            }
+                                            .small,
+                                            p {
+                                                line-height: 15px;
+                                            }
+                                        }
+                                        .price {
+                                            display: grid;
+                                            text-align: end;
+                                            .price__num {
+                                                display: inline-flex;
+                                                justify-content: flex-end;
+                                                gap: 5px;
+                                                h6 {
+                                                    font-weight: bold;
+                                                }
+                                            }
+                                            .btnDelProd {
+                                                cursor: pointer;
+                                            }
+                                        }
+
+                                    }
+                                }
+                            }
+                        }
+                        .cart__info::before {
+                            content: "";
+                            border-bottom: 2rem solid #fff;
+                            border-right: 0.8rem solid transparent;
+                            border-left: 0.8rem solid transparent;
+                            position: absolute;
+                            top: -1.2rem;
+                            right: 2.4rem;
+                            z-index: 10;
+                        }
+                    }
+                }
+            }
+        }
+        .menu--suggest {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+            margin-top: -0.75rem;
+            @include tablet {
+                display: none;
+            }
+            .freeShip{
+                @include phone{
+                    display: block !important;
+                    position: absolute;
+                    top: 20px;
+                    left: 70px;
+                    width: 60px;
+                    z-index: 10000000;
+                    img{
+                        @include phone{
+                            width: 100% !important;
+                        }
+                    }
+                }
+            }
+
+            .suggest{
+                font-size: 11px;
+                color: white;
+                display: flex;
+                gap: 15px;
+                @include phone {
+                    display: none;
+                }
+            }
+            .saleTiki{
+                text-align: right;
+                color: white;
+                padding-right: 0;
+                @include phone {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+::placeholder {
+    font-size: 12px;
+}
+
+.dropdown-menu{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px;
+}
+
+.dropdown-menu .dropdown-item i {
+    color: rgb(194, 194, 194);
+    font-size: 13px;
+    padding: 0;
+}
+
+.activeCategory {
+    background: #017fff !important;
+    color: white;
+    opacity: 0.8;
+    @extend .categoryMenu
+}
+
+.categoryMenu{
+    display: flex;
+    align-items: center;
+    padding: 10px 15px; 
+    cursor: pointer;
+}
+

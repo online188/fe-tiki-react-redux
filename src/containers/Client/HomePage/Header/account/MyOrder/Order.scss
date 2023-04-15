@@ -1,0 +1,128 @@
+@import url("https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css");
+@import '../../../../../../assets/css/variable.scss';
+.steps .step {
+    display: block;
+    width: 100%;
+    text-align: center
+}
+.steps .step .step-icon-wrap {
+    display: block;
+    position: relative;
+}
+.steps .step .step-icon-wrap::before,
+.steps .step .step-icon-wrap::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    width: 50%;
+    height: 3px;
+    margin-top: -1px;
+    background: #e1e7ec;
+    content: '';
+    z-index: 1
+}
+.steps .step .step-icon-wrap::before {
+    left: 0
+}
+.steps .step .step-icon-wrap::after {
+    right: 0
+}
+.steps .step .step-icon {
+    display: inline-block;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #dfdfdf;
+    font-size: 25px;
+    line-height: 52px;
+    z-index: 5;
+    color: #858585
+}
+
+.step-icon{
+    i{
+        font-weight: 600;
+    }
+}
+
+.steps .step .step-title {
+    margin: 15px 0 0 0 ;
+    color: #878787;
+    font-size: 13px;
+}
+
+.activeStatus {
+    color: #28a745 !important;
+}
+
+.steps .step:first-child .step-icon-wrap::before {
+    display: none
+}
+.steps .step:last-child .step-icon-wrap::after {
+    display: none
+}
+.steps .step.completed .step-icon-wrap::before,
+.steps .step.completed .step-icon-wrap::after {
+    background-color: #28a745
+}
+.steps .step.completed .step-icon {
+    background-color: #28a745;
+    color: #fff
+    
+}
+
+.tabMyOrder{
+    display: flex;
+    gap: 20px;
+    @include TabItem ;
+}
+.detail{
+    display: flex;
+    gap: 10px;
+    justify-content: end;
+}
+
+.imgProduct{
+    img{
+        width: 60px;
+    }
+}
+
+.rating{
+    .rating-item{
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        justify-content: space-between;
+        .rating-product{
+            img{
+                width: 18%;
+            }
+        }
+    }
+    .rating-item:hover{
+        background: rgb(238, 238, 238);
+    }
+    .ratingUser{
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        img{
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+        }
+    }
+}
+
+.viewRating{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btnRating{
+    display: flex;
+    justify-content: end;
+}

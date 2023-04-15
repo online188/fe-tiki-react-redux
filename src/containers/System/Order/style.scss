@@ -1,0 +1,143 @@
+@import '../../../assets/css/variable.scss';
+
+.orderManage{
+    .nav, .nav-tabs{
+        @include phone {
+            display: grid;
+            grid-template-columns: repeat(7,32%);
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+        @include TabItem ;
+        @include hiddenScrollbar;
+    }
+    .nav::-webkit-scrollbar { 
+        display: none;  
+    }
+
+    .listOrder{
+        padding: 15px;
+        background: #f6f7f7;
+        border: 1px solid #e5e5e5;
+        .tableOrder{
+            .filter{
+                padding:5px 10px;
+                color: white;
+                background: rgb(82, 192, 82);
+                display: grid;
+                grid-template-columns: 40% 28% 28%;
+                gap: 15px;
+                align-items: center;
+                .orderSort{
+                    display: flex;
+                    align-items: center;
+                    .labelSort{
+                        width: 25%;
+                        @include phone{
+                            display: none;
+                        }
+                    }
+                    .item-filterOrder{
+                        width: 75%;
+                        height: 28px;
+                    }
+                }
+            }
+            .list-order{
+                table{
+                    @extend .nav;
+                    @include phone{
+                        overflow-x: scroll;
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.logoBill{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    img{
+        width: 5%;
+    }
+}
+
+.title-info-bill{
+    font-weight: 600;
+    color: rgb(119, 119, 119);
+}
+
+.bill-status{
+    font-size: 17px;
+    font-weight: 600;
+    text-align: center;
+    color: rgb(0, 110, 255);
+}
+
+.datePayment{
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #656565;
+    font-size: 12px;
+}
+
+.bill-detail{
+    display: flex;
+    justify-content: center;
+    background: #f7f7f7;
+    padding: 15px;
+    gap: 10px;
+
+    .customer{
+        padding: 15px;
+        background: white;
+    }
+    .order-info{
+        @extend .customer;
+    }
+}
+
+
+.actionOrder{
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+ul.paginationBttns{
+    background: none;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    a {
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #2b2eff;
+        cursor: pointer;
+    }
+}
+
+.paginationActive a {
+    color: white !important;
+    background-color: #04AA6D;
+}
+
+.paginationDisabled a {
+    color: rgb(202, 202, 202);
+    background-color: rgb(192, 192, 192);
+}
+.previous, .next{
+    a{
+        border: none !important;
+        background: none !important;
+    }
+}

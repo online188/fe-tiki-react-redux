@@ -1,0 +1,115 @@
+@import '../../../assets/css/variable.scss';
+.Bill{
+    background: white;
+    padding: 10px;
+    .billHeader{
+        display: grid;
+        grid-template-columns: 60% 40%;
+        justify-content: space-between;
+        .container-bill{
+            @include headerAdmin;
+            .billTitle{
+                @include titleAdmin
+            }
+        }
+        .search-bill {
+            display: grid;
+            align-items: center;
+            grid-template-columns: 18% 82%;
+            input{
+                height: 30px;
+            }
+        }
+    }
+    .tabBill{
+        margin-bottom: 15px;
+        @include phone{
+            display: grid;
+            grid-template-columns: 25% 35% 50%;
+            font-size: 12px;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+        @include TabItem ;
+        @include hiddenScrollbar;
+    }
+    .tabBill::-webkit-scrollbar { 
+        display: none;  
+    }
+    .detailBill{
+        .allBill{
+            .list-bill{
+                table{
+                    @extend .tabBill;
+                    @include phone{
+                        overflow-x: scroll;
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.bill-header{
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    margin: 10px 0 5px 0;
+    font-size: 16px;
+}
+.date-bill{
+    text-align: center;
+    color: grey;
+    font-size: 13px;
+}
+
+.detail-bill{
+    margin: 10px 0 15px 0;
+    .info-bill{
+        display: grid;
+        grid-template-columns: 15% 40% 40%;
+        gap: 20px;
+        align-items: center;
+        margin-bottom: 8px;
+        .value-bill{
+            display: flex;
+            justify-content: space-between;
+        }
+        .bill-customer{
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}
+
+.btnViewBill{
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 13px;
+    color: #4c75eb;
+    font-weight: 600;
+}
+.btnViewBill:hover{
+    background: #009c2f;
+    color: white;
+}
+
+.totalMoney-bill{
+    display: flex;
+    justify-content: space-between;
+    .tax{
+        display: flex;
+        justify-content: space-between;
+        width: 30%;
+    }
+    .moneyBill{
+        width: 36%;
+        .item-money-bill{
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid lightgray;
+            margin-bottom: 10px;
+        }
+    }
+}

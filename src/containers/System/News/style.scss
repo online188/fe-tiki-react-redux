@@ -1,0 +1,26 @@
+@import '../../../assets/css/variable.scss';
+
+.newManage{
+    background: white;
+    padding: 10px;
+    .news-header{
+        @include headerAdmin;
+        .news-title{
+            @include titleAdmin;
+        }
+    }
+    .addNews{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    table{
+        @include phone{
+            overflow-x: scroll;
+            display: block;
+        }
+    }
+    table::-webkit-scrollbar { 
+        display: none;  
+    }
+}

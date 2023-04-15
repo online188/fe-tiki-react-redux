@@ -1,0 +1,61 @@
+@import "../../../../../assets/css/variable.scss";
+
+.hightLight {
+    background: white;
+    margin-top: 15px;
+    padding: 15px;
+    .list__category {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px 10px 0 0px;
+        .categoryItem{
+            padding: 0;
+            width: 9%;
+            text-align: center;
+            @include phone{
+                width: 25%;
+            }
+        }
+        .categoryItem:hover {
+            color: blue important;
+            transform: scale(1.1);
+            transition: transform 0.3s linear;
+        }
+    }
+}
+
+.mail{
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin: 15px 0;
+    background: white;
+    @include phone{
+        padding: 0;
+        flex-direction: column;
+    }
+    .titleMail{
+        display: flex;
+        .imgMail{
+            @include phone{
+                display: none;
+            }
+        }
+        .info--mail {
+            @include phone{
+                padding: 0;
+            }
+            p{
+                @include phone{
+                    display: none;
+                }
+            }
+        }
+    }
+    .formMail{
+        display: flex;
+        button{
+            width: 120px;
+        }
+    }
+}

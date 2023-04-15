@@ -1,0 +1,79 @@
+@mixin transform($transforms) {
+    -moz-transform: $transforms;
+    -o-transform: $transforms;
+    -ms-transform: $transforms;
+    -webkit-transform: $transforms;
+    transform: $transforms;
+}
+
+@mixin pc {
+    @media(min-width: 1024px) and (max-width: 1440px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media(min-width: 580px) and (max-width: 980px) {
+        @content;
+    }
+}
+
+@mixin phone {
+    @media(max-width: 576px) {
+        @content;
+    }
+}
+
+// tab modules
+@mixin TabItem{
+    .nav-item{
+        cursor: pointer;
+        @include phone{
+            font-size: 12px;
+            a{
+                @include phone{
+                    padding: 5px;
+                }
+            }
+        }
+        .active.nav-link{
+            color: rgb(83, 138, 255) !important;
+            border-bottom: 3px solid rgb(83, 138, 255) !important;
+            font-weight: 600;
+            border: none;
+        }
+        .nav-link{
+            color: #535353;
+            .statical{
+                font-size: 13px;
+            }
+        }
+    }
+}
+
+@mixin headerAdmin{
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    font-family: system-ui;
+}
+
+@mixin titleAdmin{
+    font-size: 17px;
+    font-weight: 600;
+    color: rgb(100, 100, 100);
+    margin-left: 10px;
+}
+
+// hidden scrollbar
+@mixin hiddenScrollbar{
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;
+}
+
+// mixin hide scrollbar for chrome
+@mixin hideScrollbar{
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+}
+

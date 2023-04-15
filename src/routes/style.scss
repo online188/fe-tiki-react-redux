@@ -1,0 +1,53 @@
+@import "./../assets/css/variable.scss";
+
+.main-container{
+    .module{
+        display: flex;
+        .system-container{
+            height: 100vh;
+            overflow-y: auto;
+            box-shadow: none;
+            background: #f8f9fa !important;
+            @include phone{
+                width: 100% !important;
+            }
+            .menuAdmin{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: white;
+                border-bottom: 1px solid lightgray;
+                .collapse_module{
+                    display: flex;
+                    align-items: center;
+                    margin-left: 15px;
+                    span{
+                        i{cursor: pointer;}
+                    }
+                }
+                .account{
+                    display: flex;
+                    align-items: center;
+                    .acc{
+                        padding: 5px 15px;
+                        margin: 0 20px;
+                        img{
+                            width: 32px;
+                        }
+                    }
+                    .logout{
+                        padding-right: 15px;
+                        font-weight: normal;
+                    }
+                }
+            }
+
+            .system-list{
+                padding: 10px 15px;
+                @include phone{
+                    padding: 10px !important;
+                }
+            }
+        }
+    }
+}
