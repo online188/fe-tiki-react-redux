@@ -69,6 +69,8 @@ const ProductSuggestion = () => {
         initialProduct();
     };
 
+    // eslint-disable-next-line no-restricted-globals
+    console.log('Screen resolution is: ' + screen.width + 'x' + screen.height);
     return (
         <div className="suggest__list mt-4">
             <div className="tabSuggest">

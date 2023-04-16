@@ -22,17 +22,17 @@ const Product = (mobile) => {
     };
 
     return (
-        <div className="product">
+        <div className="container-fluid product">
             <h5 className="headProduct">
                 <img src={iconProduct} alt="" />
                 <span>Sản Phẩm Nổi Bật</span>
             </h5>
 
-            <div className="productDetail">
+            <div className="row productDetail">
                 {products?.length > 0
                     ? products.map((item, index) => {
                           return (
-                              <div className="product--item" key={index}>
+                              <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 product--item" key={index}>
                                   <div onClick={() => viewDetail(item)}>
                                       <img src={item.image} className="img-fluid" alt="" />
                                       <h6 className="my-2 text-dark">{item.name}</h6>

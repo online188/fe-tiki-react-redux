@@ -20,17 +20,17 @@
         margin-top: 20px;
         @include phone {
             overflow-x: auto;
-            flex-wrap: nowrap !important;
+            // flex-wrap: nowrap !important;
         }
         @include tablet{
             overflow-x: auto;
-            flex-wrap: nowrap !important;
+            // flex-wrap: nowrap !important;
         }
         .product--item {
             width: 20%;
             padding: 15px;
             @include phone {
-                width: 50%;
+                width: 100%;
                 padding: 0;
             }
             div{

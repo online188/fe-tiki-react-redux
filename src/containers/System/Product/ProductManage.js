@@ -2,7 +2,7 @@ import { numberFormat, totalProductSold } from '../../../components/Formatting/F
 import { useSelector, useDispatch } from 'react-redux';
 import ModalEditProduct from './ModalEditProduct';
 import * as actions from '../../../store/actions';
-import React,{useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
 import ModalProduct from './ModalProduct';
 import Sort from './Sort';
@@ -15,7 +15,7 @@ const ProductManage = (props) => {
 
     //fetch product
     const dispatch = useDispatch();
-    const listProducts = useSelector(state => state.admin.products);
+    const listProducts = useSelector((state) => state.admin.products);
     useEffect(() => {
         dispatch(actions.fetchProducts());
     }, [dispatch]);
@@ -25,8 +25,8 @@ const ProductManage = (props) => {
     //create product
     const handleAddNewProduct = () => {
         setModalProduct(!modalProduct);
-    }
-    const CreateNewProduct=(data)=> {
+    };
+    const CreateNewProduct = (data) => {
         const dataProduct = new FormData();
         dataProduct.append('name', data.name);
         dataProduct.append('price', data.price);
@@ -36,18 +36,18 @@ const ProductManage = (props) => {
         dataProduct.append('supplier_id', data.supplier_id);
         data.image && dataProduct.append('image', data.image);
         dispatch(actions.CreateNewProduct(dataProduct));
-    }
+    };
 
     //delete product
     const deleteProduct = (product) => {
         dispatch(actions.DeleteProduct(product.id));
-    }
+    };
 
     //edit product
     const editProduct = (product) => {
         setModalEditProduct(!modalEditProduct);
         setProductEdit(product);
-    }
+    };
     const handleEditProduct = (data) => {
         const product = new FormData();
         product.append('id', productEdit.id);
@@ -59,7 +59,7 @@ const ProductManage = (props) => {
         product.append('supplier_id', data.supplier_id);
         data.image && product.append('image', data.image);
         dispatch(actions.EditProduct(product));
-    }
+    };
 
     //pagination
     const [pageNumber, setPageNumber] = useState(0);
@@ -70,25 +70,18 @@ const ProductManage = (props) => {
         setPageNumber(selected);
     };
 
-    return (        
+    return (
         <div className="productManage">
-            <ModalProduct
-                isOpen={modalProduct}
-                toggleParent={handleAddNewProduct}
-                createProduct={CreateNewProduct}
-            />
+            <ModalProduct isOpen={modalProduct} toggleParent={handleAddNewProduct} createProduct={CreateNewProduct} />
 
-            <ModalEditProduct  
-                isOpen={modalEditProduct}
-                toggleParent={editProduct}
-                currentProduct={productEdit}
-                editProduct={handleEditProduct}
-            />
+            <ModalEditProduct isOpen={modalEditProduct} toggleParent={editProduct} currentProduct={productEdit} editProduct={handleEditProduct} />
 
-            <div className='addProduct'>
-                <div className='product-head'>
-                    <img src="https://icon-library.com/images/icon-product/icon-product-18.jpg" style={{width: '5%'}} alt=""/>
-                    <div className="productTitle">Sản phẩm (<small>{listProducts.length}</small>)</div>
+            <div className="addProduct">
+                <div className="product-head">
+                    <img src="https://icon-library.com/images/icon-product/icon-product-18.jpg" style={{ width: '5%' }} alt="" />
+                    <div className="productTitle">
+                        Sản phẩm (<small>{listProducts.length}</small>)
+                    </div>
                 </div>
 
                 <div className="action">
@@ -114,65 +107,62 @@ const ProductManage = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {   
-                        listProducts?.length>0 ?
+                    {listProducts?.length > 0 ? (
                         listProducts.slice(pagesVisited, pagesVisited + productPerPage).map((item, index) => {
-                            return(
+                            return (
                                 <tr key={index}>
                                     <td>{index + 1}</td>
-                                    <td style={{width:'4%'}}><img src={item.image} className="w-100"  alt="" /> </td>
-                                    <td className='text-primary'>{item.name}</td>
-                                    <td>{item.qty}</td>
-                                    <td>
-                                        {
-                                            item.productSold?.length>0?
-                                            <span> { totalProductSold(item.productSold) } </span> : 0
-                                        }
+                                    <td style={{ width: '4%' }}>
+                                        <img src={item.image} className="w-100" alt="" />{' '}
                                     </td>
+                                    <td className="text-primary">{item.name}</td>
+                                    <td>{item.qty}</td>
+                                    <td>{item.productSold?.length > 0 ? <span> {totalProductSold(item.productSold)} </span> : 0}</td>
                                     <td>
-                                        {
-                                            item.qty < totalProductSold(item.productSold) ?
-                                            <span className="badge badge-secondary">Hết hàng</span> :
-                                            <span className='badge badge-success'>Còn hàng</span>
-                                        }
+                                        {item.qty < totalProductSold(item.productSold) ? (
+                                            <span className="badge badge-secondary">Hết hàng</span>
+                                        ) : (
+                                            <span className="badge badge-success">Còn hàng</span>
+                                        )}
                                     </td>
 
                                     <td>{numberFormat(item.price)}</td>
                                     <td>{numberFormat(item.sale)}</td>
                                     <td>
-                                        <button onClick={()=> editProduct(item)} type="button" className="btn text-primary pl-0">
+                                        <button onClick={() => editProduct(item)} type="button" className="btn text-primary pl-0">
                                             <i className="fas fa-pencil-alt"></i>
                                         </button>
-                                        <button onClick={()=> deleteProduct(item)} type="button" className="btn text-danger p-0">
+                                        <button onClick={() => deleteProduct(item)} type="button" className="btn text-danger p-0">
                                             <i className="fas fa-trash-alt"></i>
                                         </button>
                                     </td>
                                 </tr>
-                            )
+                            );
                         })
-                        : 
+                    ) : (
                         <tr>
-                            <td colSpan="10" className="text-center text-danger">Không có sản phẩm nào</td>
+                            <td colSpan="10" className="text-center text-danger">
+                                Không có sản phẩm nào
+                            </td>
                         </tr>
-                    }
+                    )}
                 </tbody>
             </table>
 
-            {
-                listProducts.length >0 &&
+            {listProducts.length > 0 && (
                 <ReactPaginate
-                    previousLabel={"<"}
-                    nextLabel={">"}
+                    previousLabel={'<'}
+                    nextLabel={'>'}
                     pageCount={pageCount}
                     onPageChange={changePage}
-                    containerClassName={"paginationBttns"}
-                    previousLinkClassName={"previousBttn"}
-                    nextLinkClassName={"nextBttn"}
-                    disabledClassName={"paginationDisabled"}
-                    activeClassName={"paginationActive"}
+                    containerClassName={'paginationBttns'}
+                    previousLinkClassName={'previousBttn'}
+                    nextLinkClassName={'nextBttn'}
+                    disabledClassName={'paginationDisabled'}
+                    activeClassName={'paginationActive'}
                 />
-            }
+            )}
         </div>
     );
-}
+};
 export default ProductManage;
