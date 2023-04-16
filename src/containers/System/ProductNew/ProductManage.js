@@ -64,6 +64,8 @@ const ProductManageNew = (props) => {
         dispatch(actions.EditProduct(product));
     };
 
+    const [search, setSearch] = useState('');
+
     //pagination
     const [pageNumber, setPageNumber] = useState(0);
     const productPerPage = 9;
@@ -72,9 +74,10 @@ const ProductManageNew = (props) => {
     };
 
     useEffect(() => {
-        dispatch(actions.fetchPaginationProducts(pageNumber, productPerPage, '')); // Thay đổi ở đây!!!
+        dispatch(actions.fetchPaginationProducts(pageNumber, productPerPage, search)); // Thay đổi ở đây!!!
     }, [pageNumber]);
 
+    console.log(search);
     return (
         <div className="productManage">
             <ModalProduct isOpen={modalProduct} toggleParent={handleAddNewProduct} createProduct={CreateNewProduct} />
@@ -96,7 +99,7 @@ const ProductManageNew = (props) => {
                 </div>
             </div>
             {/* Làm thêm mục tìm kiếm sp ở đây */}
-            <Sort pageNumber={pageNumber} productPerPage={productPerPage} />
+            <Sort pageNumber={pageNumber} productPerPage={productPerPage} search={search} setSearch={setSearch} />
 
             <table className="table table-striped table-bordered table-hover">
                 <thead className="text-white">

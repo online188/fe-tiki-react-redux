@@ -4,8 +4,8 @@ import { useHistory } from 'react-router-dom';
 import * as actions from '../../../store/actions';
 
 const Sort = (props) => {
-    const { pageNumber, productPerPage } = props;
-    const [search, setSearch] = useState('');
+    const { pageNumber, productPerPage, search, setSearch } = props;
+
     const dispatch = useDispatch();
 
     // Search
