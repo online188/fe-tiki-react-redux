@@ -18,6 +18,8 @@ const ProductSuggestion = () => {
     const dispatch = useDispatch();
     const category = useSelector((state) => state.admin.categories);
     const Products = useSelector((state) => state.admin.detailCategory);
+    // Detect screen size on page load
+    const numberLoadMore = useSelector((state) => state.user.numberLoad);
 
     const history = useHistory();
     const viewDetail = (product) => {
@@ -41,7 +43,7 @@ const ProductSuggestion = () => {
     }, [Products]);
 
     const initialProduct = () => {
-        setProductShow(Products.slice(0, 4));
+        setProductShow(Products.slice(0, numberLoadMore));
         setLoadMore(false);
         setResetButton(false);
     };
@@ -53,7 +55,7 @@ const ProductSuggestion = () => {
         setLoading(true);
 
         setTimeout(() => {
-            const loadProduct = [...productShow, ...Products.slice(visibleProduct, visibleProduct + 4)];
+            const loadProduct = [...productShow, ...Products.slice(visibleProduct, visibleProduct + numberLoadMore)];
             setProductShow(loadProduct);
             setLoading(false);
 
@@ -69,8 +71,6 @@ const ProductSuggestion = () => {
         initialProduct();
     };
 
-    // eslint-disable-next-line no-restricted-globals
-    console.log('Screen resolution is: ' + screen.width + 'x' + screen.height);
     return (
         <div className="suggest__list mt-4">
             <div className="tabSuggest">
