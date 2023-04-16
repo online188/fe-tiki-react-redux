@@ -28,7 +28,7 @@ const System = (props) => {
     const [menuLeft, setMenuLeft] = useState(true);
     const [rightContent, setRightContent] = useState('rightContent');
     const [widthMenuLeft] = useState('menuLeft');
-    const avatar = 'https://avatars.githubusercontent.com/u/38268599?v=4';
+    const avatar = 'https://avatars.githubusercontent.com/u/83853020?v=4';
 
     const toggleMenu = () => {
         setMenuLeft(!menuLeft);
