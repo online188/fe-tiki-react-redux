@@ -14,7 +14,7 @@ const loginAcc = (data) => {
 
 // Logout
 const logout = () => {
-    return axios.delete(`${path.PORT}/auth/logout`);
+    return axios.delete(`${path.PORT}/auth/logout`, { withCredentials: true });
 };
 
 // get user
