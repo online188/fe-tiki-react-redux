@@ -15,9 +15,9 @@ const ModalUser = (props) => {
     const [previewImg, setPreviewImg] = useState('');
 
     const dispatch = useDispatch();
-    const genders = useSelector(state => state.admin.genders);
-    const roles = useSelector(state => state.admin.roles);
-    const positions = useSelector(state => state.admin.positions);
+    const genders = useSelector((state) => state.admin.genders);
+    const roles = useSelector((state) => state.admin.roles);
+    const positions = useSelector((state) => state.admin.positions);
 
     useEffect(() => {
         dispatch(actions.fetchGender());
@@ -25,12 +25,12 @@ const ModalUser = (props) => {
         dispatch(actions.fetchPosition());
     }, [dispatch]);
 
-    const toggle =()=>{
+    const toggle = () => {
         props.toggleModal();
-    }
+    };
 
     // add new user
-    const AddUser=(e)=>{
+    const AddUser = (e) => {
         e.preventDefault();
         const data = {
             email: email,
@@ -40,145 +40,136 @@ const ModalUser = (props) => {
             gender: gender,
             roleId: roleId,
             positionId: positionId,
-            image: image    
+            image: image,
         };
         props.AddNewUser(data);
         toggle();
-    }
+    };
 
     //upload file
-    const changeImage=(e)=>{
-        let file=e.target.files[0];
-        if(file){
-            let objectUrl=URL.createObjectURL(file)
+    const changeImage = (e) => {
+        let file = e.target.files[0];
+        if (file) {
+            let objectUrl = URL.createObjectURL(file);
             setPreviewImg(objectUrl);
-            setImage(file);                        
+            setImage(file);
         }
-    }
+    };
 
     //remove image
-    const removeImg=()=>{
+    const removeImg = () => {
         setPreviewImg('');
         setImage('');
-    }
+    };
 
     return (
-        <Modal isOpen={props.isOpen}  toggle={()=>toggle()}  size="lg">
-            <form
-                onSubmit={AddUser}
-                encType='multipart/form-data'
-            >
-            <ModalHeader toggle={()=>toggle()}>Thêm thành viên</ModalHeader>
-            <ModalBody>
-                <div>
-                    <div className="row">
-                        <div className="form-group col-md-6">
-                            <label>Email</label>
-                            <input onChange={(e)=>setEmail(e.target.value)} value={email} type="email" className="form-control" />
-                        </div>
+        <Modal isOpen={props.isOpen} toggle={() => toggle()} size="lg">
+            <form onSubmit={AddUser} encType="multipart/form-data">
+                <ModalHeader toggle={() => toggle()}>Thêm thành viên</ModalHeader>
+                <ModalBody>
+                    <div>
+                        <div className="row">
+                            <div className="form-group col-md-6">
+                                <label>Email</label>
+                                <input onChange={(e) => setEmail(e.target.value)} value={email} type="email" className="form-control" />
+                            </div>
 
-                        <div className="form-group col-md-3">
-                            <label>Ảnh đại diện</label>
-                            <input id="previewImg" type="file" hidden 
-                                onChange={(e)=>changeImage(e)} 
-                                name='image'
-                            />
-                            <label htmlFor="previewImg" className="btn btn-success w-100"><i className="fas fa-upload"></i> Tải ảnh</label>       
-                        </div>
+                            <div className="form-group col-md-3">
+                                <label>Ảnh đại diện</label>
+                                <input id="previewImg" type="file" hidden onChange={(e) => changeImage(e)} name="image" />
+                                <label htmlFor="previewImg" className="btn btn-success w-100">
+                                    <i className="fas fa-upload"></i> Tải ảnh
+                                </label>
+                            </div>
 
-                        <div className="preview-image col-md-2 border" 
-                            style={{backgroundImage: `url(${previewImg})`, backgroundPosition: 'center', backgroundSize: 'cover',backgroundRepeat: 'no-repeat'}}
-                        >
-                            {
-                            previewImg ?
-                                <div onClick={() => removeImg()} className="col-md-12" style={{textAlign: 'end', position: 'absolute', right: '-1.5rem', top: '-1rem'}}>
-                                    <i className="far fa-times-circle text-danger"></i>
-                                </div> 
-                                : <img src="https://giaoducthuydien.vn/wp-content/themes/consultix/images/no-image-found-360x250.png" className="w-100" alt="..." />
-                            }
-                        </div>
-                    </div>
-
-                    <div className="row">
-                        <div className="form-group col-md-6">
-                            <label>Họ tên </label>
-                            <input onChange={(e)=>setUsername(e.target.value)} value={username} type="text" className="form-control" />
-                        </div>
-                    </div>
-                    
-                    .<div className="row">    
-                        <div className="form-group col-6">
-                            <label>Địa chỉ</label>
-                            <input onChange={(e)=>setAddress(e.target.value)} value={address} type="text" className="form-control" />
-                        </div>
-
-                        <div className="form-group col-6">
-                            <label>Số điện thoại</label>
-                            <input onChange={(e)=>setPhoneNumber(e.target.value)} value={phoneNumber} type="text" className="form-control" />
-                        </div>
-                    </div>
-
-                    <div className="row">
-                        <div className="form-group col-md-6">
-                            <label>Giới tính</label>
-                            <select className="form-control"
-                                onChange={(e) => setGender(e.target.value)}
-                                value={gender}
+                            <div
+                                className="preview-image col-md-2 border"
+                                style={{ backgroundImage: `url(${previewImg})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}
                             >
-                                {
-                                    genders?.length >0 &&
-                                    genders.map((item, index) => {
-                                        return (
-                                            <option key={index} value={item.ValueVi}>{item.valueVi}</option>
-                                        )
-                                    })
-                                }           
-                            </select>
+                                {previewImg ? (
+                                    <div onClick={() => removeImg()} className="col-md-12" style={{ textAlign: 'end', position: 'absolute', right: '-1.5rem', top: '-1rem' }}>
+                                        <i className="far fa-times-circle text-danger"></i>
+                                    </div>
+                                ) : (
+                                    <img src="https://dci.edu.vn/wp-content/themes/consultix/images/no-image-found-360x250.png" className="w-100" alt="..." />
+                                )}
+                            </div>
                         </div>
-
-                        <div className="form-group col-md-6">
-                            <label>Vai trò</label>
-                            <select className="form-control"
-                                onChange={(e) => setRoleId(e.target.value)}
-                                value={roleId}
-                            >
-                                {
-                                    roles?.length >0 &&
-                                    roles.map((item, index) => {
-                                        return (
-                                            <option key={index} value={item.valueVi}>{item.valueVi}</option>
-                                        )
-                                    })
-                                }           
-                            </select>
+                        <div className="row">
+                            <div className="form-group col-md-6">
+                                <label>Họ tên </label>
+                                <input onChange={(e) => setUsername(e.target.value)} value={username} type="text" className="form-control" />
+                            </div>
                         </div>
+                        .
+                        <div className="row">
+                            <div className="form-group col-6">
+                                <label>Địa chỉ</label>
+                                <input onChange={(e) => setAddress(e.target.value)} value={address} type="text" className="form-control" />
+                            </div>
 
-                        <div className="form-group col-md-6">
-                            <label>Chức danh</label>
-                            <select className="form-control"
-                                onChange={(e) => setPositionId(e.target.value)}
-                                value={positionId}
-                            >
-                                {
-                                    positions?.length >0 &&
-                                    positions.map((item, index) => {
-                                        return (
-                                            <option key={index} value={item.valueVi}>{item.valueVi}</option>
-                                        )
-                                    })
-                                }           
-                            </select>
+                            <div className="form-group col-6">
+                                <label>Số điện thoại</label>
+                                <input onChange={(e) => setPhoneNumber(e.target.value)} value={phoneNumber} type="text" className="form-control" />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="form-group col-md-6">
+                                <label>Giới tính</label>
+                                <select className="form-control" onChange={(e) => setGender(e.target.value)} value={gender}>
+                                    {genders?.length > 0 &&
+                                        genders.map((item, index) => {
+                                            return (
+                                                <option key={index} value={item.ValueVi}>
+                                                    {item.valueVi}
+                                                </option>
+                                            );
+                                        })}
+                                </select>
+                            </div>
+
+                            <div className="form-group col-md-6">
+                                <label>Vai trò</label>
+                                <select className="form-control" onChange={(e) => setRoleId(e.target.value)} value={roleId}>
+                                    {roles?.length > 0 &&
+                                        roles.map((item, index) => {
+                                            return (
+                                                <option key={index} value={item.valueVi}>
+                                                    {item.valueVi}
+                                                </option>
+                                            );
+                                        })}
+                                </select>
+                            </div>
+
+                            <div className="form-group col-md-6">
+                                <label>Chức danh</label>
+                                <select className="form-control" onChange={(e) => setPositionId(e.target.value)} value={positionId}>
+                                    {positions?.length > 0 &&
+                                        positions.map((item, index) => {
+                                            return (
+                                                <option key={index} value={item.valueVi}>
+                                                    {item.valueVi}
+                                                </option>
+                                            );
+                                        })}
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </ModalBody>
+                </ModalBody>
 
-            <ModalFooter>
-                <Button type='submit' color="primary" className="btn"> Tạo thành viên </Button>
-                <Button color="secondary" className="btn" onClick={()=>toggle()}>Huỷ</Button>
-            </ModalFooter>
+                <ModalFooter>
+                    <Button type="submit" color="primary" className="btn">
+                        {' '}
+                        Tạo thành viên{' '}
+                    </Button>
+                    <Button color="secondary" className="btn" onClick={() => toggle()}>
+                        Huỷ
+                    </Button>
+                </ModalFooter>
             </form>
         </Modal>
-    )
-}
+    );
+};
 export default ModalUser;

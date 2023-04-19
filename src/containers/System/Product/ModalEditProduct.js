@@ -97,7 +97,7 @@ const ModalEditProduct = (props) => {
                                     <i className="far fa-times-circle text-danger"></i>
                                 </div>
                             ) : (
-                                <img src="https://giaoducthuydien.vn/wp-content/themes/consultix/images/no-image-found-360x250.png" className="w-100" alt="..." />
+                                <img src="https://dci.edu.vn/wp-content/themes/consultix/images/no-image-found-360x250.png" className="w-100" alt="..." />
                             )}
                         </div>
                     </div>
