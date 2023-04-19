@@ -12,6 +12,11 @@ const loginAcc = (data) => {
     return axios.post(`${path.PORT}/auth/login`, data, { withCredentials: true }); //Phải thêm cái này thì mới setCookie
 };
 
+// Login
+const getUserSocial = () => {
+    return axios.get(`${path.PORT}/auth/login/success`, { withCredentials: true }); //Phải thêm cái này thì mới setCookie
+};
+
 // Logout
 const logout = () => {
     return axios.delete(`${path.PORT}/auth/logout`, { withCredentials: true });
@@ -151,4 +156,5 @@ export {
     getPointUser,
     saveDiscount,
     getDiscountUser,
+    getUserSocial,
 };

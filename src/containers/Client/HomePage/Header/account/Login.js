@@ -54,6 +54,9 @@ const LoginAuth = (props) => {
         document.title = 'Đăng nhập';
     }, []);
 
+    const handleSocialLogin = async (data) => {
+        window.open('http://localhost:6969/auth/google', '_self');
+    };
     return (
         <>
             <div className="menuAuth">
@@ -110,6 +113,16 @@ const LoginAuth = (props) => {
                         <Link to={path.REGISTER} className="text-primary small text-end">
                             Chưa có tài khoản ?
                         </Link>
+
+                        <div className="col-12 text-center mt-3">
+                            <span className="text-other-login"> Or login with: </span>
+                        </div>
+
+                        <div className="col-12 social-login">
+                            <i className="fab fa-google-plus-g google" onClick={() => handleSocialLogin()}></i>
+                            <i className="fab fa-twitter twitter"></i>
+                            <i className="fab fa-facebook-f facebook"></i>
+                        </div>
                         <div className="small mt-2 m-3 text-center">
                             Bằng việc tiếp tục, bạn đã chấp nhận <Link to={path.HOMEPAGE}>điều khoản sử dụng</Link>{' '}
                         </div>

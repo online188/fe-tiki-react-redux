@@ -9,11 +9,55 @@ import Category from './Category';
 import Suggest from './Suggest';
 import { path } from 'utils';
 import './style/header.scss';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getUserSocial } from 'services/authService';
+import instance from '../../../../axios';
+import { useDispatch } from 'react-redux';
+import { getUser } from 'store/actions';
 
 const Header = () => {
+    const dispatch = useDispatch();
     const user = useSelector((state) => state.auth.user);
     const logo = 'https://salt.tikicdn.com/ts/upload/ae/f5/15/2228f38cf84d1b8451bb49e2c4537081.png';
+
+    const [userSocial, setUserSocial] = useState(null);
+
+    useEffect(() => {
+        const getUserHeader = async () => {
+            let res = await getUserSocial();
+            console.log(res);
+            const user = await instance.get(`/user`, {
+                headers: {
+                    Authorization: `Bearer ${res.data.accessToken}`,
+                },
+            });
+            console.log(user);
+            dispatch(getUser(user));
+            localStorage.setItem('token', res.data.accessToken);
+
+            // fetch('http://localhost:6969/auth/login/success', {
+            //     method: 'GET',
+            //     credentials: 'include',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            // })
+            //     .then((response) => {
+            //         console.log(response);
+            //         if (response.status === 200) return response.json();
+            //         throw new Error('authentication has been failed!');
+            //     })
+            //     .then((resObject) => {
+            //         setUserSocial(resObject.user);
+            //     })
+            //     .catch((err) => {
+            //         console.log(err);
+            //     });
+        };
+        getUserHeader();
+    }, []);
+
+    // console.log(userSocial);
 
     return (
         <div className="header">
