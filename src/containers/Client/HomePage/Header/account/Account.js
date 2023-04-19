@@ -19,13 +19,17 @@ const Account = () => {
     // Discount user
     useEffect(() => {
         let userId = user ? user.id : null;
-        dispatch(GetDiscountUser(userId));
+        if (userId) {
+            dispatch(GetDiscountUser(userId));
+        }
     }, [dispatch, user]);
 
     // get point
     useEffect(() => {
         let userId = user ? user.id : '';
-        dispatch(getPoint(userId));
+        if (userId) {
+            dispatch(getPoint(userId));
+        }
     }, [dispatch, user]);
 
     // get user
