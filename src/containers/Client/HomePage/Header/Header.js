@@ -25,7 +25,6 @@ const Header = () => {
     useEffect(() => {
         const getUserHeader = async () => {
             let res = await getUserSocial();
-            console.log(res);
             const user = await instance.get(`/user`, {
                 headers: {
                     Authorization: `Bearer ${res.data.accessToken}`,
@@ -34,25 +33,6 @@ const Header = () => {
             console.log(user);
             dispatch(getUser(user));
             localStorage.setItem('token', res.data.accessToken);
-
-            // fetch('http://localhost:6969/auth/login/success', {
-            //     method: 'GET',
-            //     credentials: 'include',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            // })
-            //     .then((response) => {
-            //         console.log(response);
-            //         if (response.status === 200) return response.json();
-            //         throw new Error('authentication has been failed!');
-            //     })
-            //     .then((resObject) => {
-            //         setUserSocial(resObject.user);
-            //     })
-            //     .catch((err) => {
-            //         console.log(err);
-            //     });
         };
         getUserHeader();
     }, []);
