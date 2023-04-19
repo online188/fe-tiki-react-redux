@@ -88,7 +88,7 @@ function Profile(props) {
 
                     <div className="form-group d-flex">
                         <label className="col-3">Số Điện Thoại</label>
-                        <input type="text" className="form-control" value={phone} onChange={(e) => setPhone(e.target.value)} />
+                        <input type="text" className="form-control" value={phone || ''} onChange={(e) => setPhone(e.target.value)} />
                     </div>
 
                     <div className="form-group d-flex">
