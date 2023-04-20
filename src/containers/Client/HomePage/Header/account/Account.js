@@ -51,6 +51,8 @@ const Account = () => {
         }
     };
     // get user login by Social
+    // Có thể thêm logic persistReducer cho state.user.isSocial để getUserSocial hoặc ko
+    // Để fix error: GET /auth/login/success	tự động mỗi khi vào page
     useEffect(() => {
         const getUserHeader = async () => {
             let res = await getUserSocial();

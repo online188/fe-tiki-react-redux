@@ -1,10 +1,10 @@
-import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authentication';
+import { userIsAdminRedir, userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authentication';
 import { ConnectedRouter as Router } from 'connected-react-router';
 import { Route, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { history } from '../redux';
 import { path } from '../utils';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import InfoAccount from './Client/HomePage/Header/account/Profile/InfoAccount';
@@ -24,27 +24,39 @@ import Cart from './Client/cart/Cart';
 import Home from '../routes/Home';
 import './App.scss';
 import ScrollToTop from './Client/HomePage/ScrollToTop';
-import instance from 'axios';
 import { GetUser } from 'services/authService';
 import { getUser } from 'store/actions';
 
 function App(props) {
     // Need to apply the hocs here to avoid applying them inside the render method
     const LoginComponent = userIsNotAuthenticated(Login);
-    const SystemComponent = userIsAuthenticated(System);
+    const SystemComponent = userIsAuthenticated(userIsAdminRedir(System));
 
     const dispatch = useDispatch();
 
+    const token = localStorage.getItem('token');
+    // get user
     useEffect(() => {
-        const getUserHeader = async () => {
-            const user = await GetUser();
-            if (user) {
-                dispatch(getUser(user));
-            }
-        };
-        getUserHeader();
+        getAccount();
     }, []);
-    console.log(useSelector((state) => state.auth));
+
+    const getAccount = async () => {
+        if (token) {
+            await GetUser()
+                .then((res) => {
+                    dispatch(getUser(res));
+                })
+                .catch((err) => {
+                    localStorage.removeItem('token');
+                    console.log(err);
+                });
+        }
+    };
+
+    console.log(
+        'Check state.auth: ',
+        useSelector((state) => state.auth)
+    );
 
     // setStateAuthUser(useSelector((state) => state.auth.user));
 
