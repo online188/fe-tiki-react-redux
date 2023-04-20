@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
 
-import userReducer from "./userReducer";
-import adminReducer from "./adminReducer";
-import clientReducer from "./clientReducer";
-import authReducer from "./authReducer";
-import ratingReducer from "./ratingReducer";
+import userReducer from './userReducer';
+import adminReducer from './adminReducer';
+import clientReducer from './clientReducer';
+import authReducer from './authReducer';
+import ratingReducer from './ratingReducer';
 import discountReducer from './discountReducer';
 import orderReducer from './orderReducer';
 
@@ -21,17 +21,17 @@ const persistCommonConfig = {
 const userPersistConfig = {
     ...persistCommonConfig,
     key: 'user',
-    whitelist: ['isLoggedIn', 'userInfo']
-
+    whitelist: ['isLoggedIn', 'userInfo'],
 };
 
-export default (history) => combineReducers({
-    router: connectRouter(history),
-    user: persistReducer(userPersistConfig, userReducer),
-    admin: adminReducer,
-    client: clientReducer,
-    auth: authReducer,
-    rating: ratingReducer,
-    discount: discountReducer,
-    order: orderReducer,
-})
+export default (history) =>
+    combineReducers({
+        router: connectRouter(history),
+        user: userReducer,
+        admin: adminReducer,
+        client: clientReducer,
+        auth: authReducer,
+        rating: ratingReducer,
+        discount: discountReducer,
+        order: orderReducer,
+    });

@@ -42,7 +42,7 @@ const System = (props) => {
     return (
         <div className="main-container">
             <div className="module">
-                {isLoggedIn && menuLeft && <MenuLeft widthMenuLeft={widthMenuLeft} toggleMenu={toggleMenu} />}
+                {menuLeft && <MenuLeft widthMenuLeft={widthMenuLeft} toggleMenu={toggleMenu} />}
                 {!menuLeft ? <MenuLeftCollapse /> : ''}
 
                 <div className={`system-container ${rightContent}`}>

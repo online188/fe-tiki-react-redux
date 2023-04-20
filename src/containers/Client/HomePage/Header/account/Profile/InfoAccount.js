@@ -17,15 +17,16 @@ import Profile from './Profile';
 import { path } from 'utils';
 
 const InfoAccount = () => {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const token = localStorage.getItem('token');
     const user = useSelector((state) => state.auth.user);
     const [subMenu, setSubMenu] = useState(`${path.ACCOUNT}`);
 
-    useEffect(() => {
-        dispatch(getUser());
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(getUser());
+    // }, [dispatch]);
 
+    // console.log(user);
     useEffect(() => {
         document.title = 'Thông tin tài khoản';
     }, [user]);

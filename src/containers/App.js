@@ -2,9 +2,10 @@ import { userIsAuthenticated, userIsNotAuthenticated } from '../hoc/authenticati
 import { ConnectedRouter as Router } from 'connected-react-router';
 import { Route, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import { history } from '../redux'
+import { history } from '../redux';
 import { path } from '../utils';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import InfoAccount from './Client/HomePage/Header/account/Profile/InfoAccount';
 import Discount from './Client/HomePage/Header/account/voucher/Discount';
@@ -23,17 +24,38 @@ import Cart from './Client/cart/Cart';
 import Home from '../routes/Home';
 import './App.scss';
 import ScrollToTop from './Client/HomePage/ScrollToTop';
+import instance from 'axios';
+import { GetUser } from 'services/authService';
+import { getUser } from 'store/actions';
 
-console.warn = () => {};
-function App(props) {   
+function App(props) {
+    // Need to apply the hocs here to avoid applying them inside the render method
+    const LoginComponent = userIsNotAuthenticated(Login);
+    const SystemComponent = userIsAuthenticated(System);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const getUserHeader = async () => {
+            const user = await GetUser();
+            if (user) {
+                dispatch(getUser(user));
+            }
+        };
+        getUserHeader();
+    }, []);
+    console.log(useSelector((state) => state.auth));
+
+    // setStateAuthUser(useSelector((state) => state.auth.user));
+
     return (
         <Router history={history}>
             <ScrollToTop />
             <ToastContainer autoClose={3000} />
             <Switch>
-                <Route path={path.HOME} exact component={(Home)} />
-                <Route path={path.LOGIN} component={userIsNotAuthenticated(Login)} />
-                <Route path={path.SYSTEM} component={userIsAuthenticated(System)} />
+                <Route path={path.HOME} exact component={Home} />
+                <Route path={path.LOGIN} component={LoginComponent} />
+                <Route path={path.SYSTEM} component={SystemComponent} />
 
                 {/* client  */}
                 <Route exact path={path.HOMEPAGE} component={HomePage} />
@@ -44,7 +66,7 @@ function App(props) {
                 {/* Auth*/}
                 <Route path={path.REGISTER} component={Register} />
                 <Route path={path.LOGIN_AUTH} component={LoginAuth} />
-                
+
                 <Route path={path.ACCOUNT} component={InfoAccount} />
                 <Route path={path.CHANGE_PASSWORD} component={InfoAccount} />
                 <Route path={path.CHANGE_ADDRESS} component={InfoAccount} />
@@ -61,9 +83,11 @@ function App(props) {
                 <Route path={path.MY_ORDER} component={OrderSuccess} />
                 <Route path={path.VERIFY_EMAIL} component={VerifyEmail} />
 
-                <Route exact path="*"><NotFound /></Route>
+                <Route exact path="*">
+                    <NotFound />
+                </Route>
             </Switch>
         </Router>
-    )
+    );
 }
 export default App;

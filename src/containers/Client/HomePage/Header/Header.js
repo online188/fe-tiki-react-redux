@@ -16,28 +16,8 @@ import { useDispatch } from 'react-redux';
 import { getUser } from 'store/actions';
 
 const Header = () => {
-    const dispatch = useDispatch();
     const user = useSelector((state) => state.auth.user);
     const logo = 'https://salt.tikicdn.com/ts/upload/ae/f5/15/2228f38cf84d1b8451bb49e2c4537081.png';
-
-    const [userSocial, setUserSocial] = useState(null);
-
-    useEffect(() => {
-        const getUserHeader = async () => {
-            let res = await getUserSocial();
-            const user = await instance.get(`/user`, {
-                headers: {
-                    Authorization: `Bearer ${res.data.accessToken}`,
-                },
-            });
-            console.log(user);
-            dispatch(getUser(user));
-            localStorage.setItem('token', res.data.accessToken);
-        };
-        getUserHeader();
-    }, []);
-
-    // console.log(userSocial);
 
     return (
         <div className="header">

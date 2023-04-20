@@ -1,11 +1,12 @@
 import { GetDiscountUser, getPoint, getUser, logoutAccount } from 'store/actions';
 import { numberFormat } from 'components/Formatting/FormatNumber';
-import { GetUser } from './../../../../../services/authService';
+import { GetUser, getUserSocial } from './../../../../../services/authService';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { path } from 'utils';
+import instance from '../../../../../axios';
 
 const Account = () => {
     const dispatch = useDispatch();
@@ -49,6 +50,20 @@ const Account = () => {
                 });
         }
     };
+    // get user login by Social
+    useEffect(() => {
+        const getUserHeader = async () => {
+            let res = await getUserSocial();
+            const user = await instance.get(`${path.PORT}/user`, {
+                headers: {
+                    Authorization: `Bearer ${res.data.accessToken}`,
+                },
+            });
+            dispatch(getUser(user));
+            localStorage.setItem('token', res.data.accessToken);
+        };
+        getUserHeader();
+    }, []);
 
     //logout
     const Logout = async () => {
