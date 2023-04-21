@@ -77,3 +77,16 @@
     overflow-y: scroll;
 }
 
+:root{
+    --primary-color: #ee4b2b;
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+    --border-color: #dbdbdb;
+    --star-gold-color: #ffce3e;
+
+    --header-height: 120px;
+    --navbar-height: 34px;
+    --header-with-search-height: calc(var(--header-height) - var(--navbar-height));
+    --header-sort-bar-height: 46px;
+}

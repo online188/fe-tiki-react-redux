@@ -53,10 +53,10 @@ function App(props) {
         }
     };
 
-    console.log(
-        'Check state.auth: ',
-        useSelector((state) => state.auth)
-    );
+    // console.log(
+    //     'Check state.auth: ',
+    //     useSelector((state) => state.auth)
+    // );
 
     // setStateAuthUser(useSelector((state) => state.auth.user));
 
