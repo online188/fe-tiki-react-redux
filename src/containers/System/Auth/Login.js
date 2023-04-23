@@ -56,7 +56,7 @@ const Login = (props) => {
                 if (res.data.status === 200) {
                     history.push(`${path.DASHBOARD}`);
                 }
-            }, 1500);
+            }, 500);
         } catch (error) {
             if (error.response) {
                 if (error.response.data) {
