@@ -1,0 +1,16 @@
+.main {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    .err {
+        margin-bottom: 50px;
+        position: relative;
+        text-align: center;
+    }
+    .btn-quit {
+        display: flex;
+        justify-content: center;
+        gap: 80px;
+    }
+}

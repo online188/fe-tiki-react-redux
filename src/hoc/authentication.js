@@ -21,7 +21,7 @@ export const userIsNotAuthenticated = connectedRouterRedirect({
 });
 
 export const userIsAdminRedir = connectedRouterRedirect({
-    redirectPath: '/',
+    redirectPath: '/protect',
     allowRedirectBack: false,
     authenticatedSelector: (state) => state.auth.user !== null && state.auth.user.roleId === 'Admin',
     predicate: (state) => state.auth.user.roleId === 'Admin',

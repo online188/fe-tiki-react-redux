@@ -48,6 +48,9 @@ export const path = {
     PAYMENT: '/user/payment',
     MY_ORDER: '/my-order',
     VERIFY_EMAIL: '/verify-order',
+
+    // Protect
+    PROTECT: '/protect',
 };
 
 export const CRUD_ACTIONS = {

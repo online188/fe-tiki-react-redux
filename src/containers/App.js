@@ -26,6 +26,7 @@ import './App.scss';
 import ScrollToTop from './Client/HomePage/ScrollToTop';
 import { GetUser } from 'services/authService';
 import { getUser } from 'store/actions';
+import Protect from './Client/HomePage/Protect/Index';
 
 function App(props) {
     // Need to apply the hocs here to avoid applying them inside the render method
@@ -94,6 +95,9 @@ function App(props) {
                 <Route path={path.PAYMENT} component={Payment} />
                 <Route path={path.MY_ORDER} component={OrderSuccess} />
                 <Route path={path.VERIFY_EMAIL} component={VerifyEmail} />
+
+                {/* Protect */}
+                <Route path={path.PROTECT} component={Protect} />
 
                 <Route exact path="*">
                     <NotFound />
