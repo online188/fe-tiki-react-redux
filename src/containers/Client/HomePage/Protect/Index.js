@@ -6,36 +6,46 @@ import React from 'react';
 import './NotFound.scss';
 
 import image from '../../../../assets/images/Loading.gif';
+import { useEffect } from 'react';
+import { GetUser } from 'services/authService';
+import { getUser } from 'store/actions';
+import { useDispatch } from 'react-redux';
 
 const Protect = () => {
+    const dispatch = useDispatch();
     const history = useHistory();
+    const token = localStorage.getItem('token');
+
+    useEffect(() => {
+        getAccount();
+        // GetUser().then((res) => {
+        //     console.log('res: ', res);
+        //     // localStorage.removeItem('token');
+        // });
+    }, []);
+
+    const getAccount = async () => {
+        await GetUser();
+        if (token) {
+            await GetUser()
+                .then((res) => {
+                    if (res) {
+                        dispatch(getUser(res));
+                    }
+                    // localStorage.removeItem('token');
+                })
+                .catch((err) => {
+                    // localStorage.removeItem('token');
+                    console.log(err);
+                });
+        }
+    };
 
     return (
         <>
-            <Header />
-            <div className="container main">
-                <div className="err">
-                    <img src={image} className="w-25" alt="" />
-                </div>
-
-                <div className="btn-quit">
-                    <div onClick={() => history.goBack()}>
-                        <button type="button" className="btn btn-primary">
-                            <i className="fa fa-angle-left mr-2"></i> Quay lại trang trước
-                        </button>
-                    </div>
-                    <Link to={path.HOMEPAGE}>
-                        <button type="button" className="btn btn-success">
-                            Trang chủ
-                        </button>
-                    </Link>
-
-                    <Link to={path.HOMEPAGE}>
-                        <button type="button" className="btn btn-warning">
-                            Mua hàng
-                        </button>
-                    </Link>
-                </div>
+            {/* <Header /> */}
+            <div className="login-bg ">
+                <img src={image} className="w-25" alt="" />
             </div>
         </>
     );
