@@ -25,7 +25,6 @@ const Protect = () => {
     }, []);
 
     const getAccount = async () => {
-        await GetUser();
         if (token) {
             await GetUser()
                 .then((res) => {
