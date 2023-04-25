@@ -23,6 +23,11 @@ const ModalProduct = (props) => {
         dispatch(fetchSupplierProduct());
     }, [dispatch]);
 
+    useEffect(() => {
+        setSupplier_id(listSupplier?.length > 0 && listSupplier[0].keyMap);
+        setCategory_id(listCategory?.length > 0 && listCategory[0].id);
+    }, [listSupplier?.length, listCategory?.length]);
+
     //reset form
     useEffect(() => {
         setName('');
@@ -31,8 +36,8 @@ const ModalProduct = (props) => {
         setPrice('');
         setSale('');
         setQty(0);
-        setCategory_id('');
-        setSupplier_id('');
+        // setCategory_id('');
+        // setSupplier_id('');
     }, []);
 
     const toggle = () => {
@@ -52,6 +57,7 @@ const ModalProduct = (props) => {
             category_id: category_id,
             supplier_id: supplier_id,
         };
+        console.log('Check data: ', data);
         props.createProduct(data);
         toggle();
     };
