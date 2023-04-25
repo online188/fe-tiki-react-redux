@@ -86,11 +86,11 @@ const ProductSuggestion = () => {
                     category.map((item, index) => {
                         return (
                             <TabPane tabId={item.id} key={index}>
-                                <div className="list px-3">
+                                <div className="row list px-3 ">
                                     {Products?.length > 0 ? (
                                         productShow.map((item, index) => {
                                             return (
-                                                <div className="list__prod mb-3" onClick={() => viewDetail(item)} key={index}>
+                                                <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2  list__prod mb-3" onClick={() => viewDetail(item)} key={index}>
                                                     {/* <img src={item.image} className="w-75" alt="" /> */}
                                                     <div className="home-product-item__img" style={{ backgroundImage: `url(${item.image})` }}></div>
                                                     <p className="text-secondary mt-3 mb-1">{item.name}</p>
