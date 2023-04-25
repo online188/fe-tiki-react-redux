@@ -11,9 +11,22 @@
         .categoryItem{
             padding: 0;
             width: 9%;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            // text-align: center;
             @include phone{
                 width: 25%;
+            }
+
+            .home-category-item__img{
+                padding-top: 100%; /*100% của chiều ngang thẻ chứa nó Khi sử dụng backgroud-img:*/
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                // border-top-left-radius: 2px;
+                // border-top-right-radius: 2px;
             }
         }
         .categoryItem:hover {

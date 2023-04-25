@@ -17,7 +17,7 @@ const Footer = () => {
 
     useEffect(() => {
         dispatch(fetchAllCategory());
-        dispatch(DetailCategory(3));
+        // dispatch(DetailCategory(3));
     }, [dispatch]);
 
     // detail category

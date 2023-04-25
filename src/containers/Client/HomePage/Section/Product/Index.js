@@ -34,7 +34,8 @@ const Product = (mobile) => {
                           return (
                               <div className="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 product--item" key={index}>
                                   <div onClick={() => viewDetail(item)}>
-                                      <img src={item.image} className="img-fluid" alt="" />
+                                      {/* <img src={item.image} className="img-fluid" alt="" /> */}
+                                      <div className="home-product-item__img" style={{ backgroundImage: `url(${item.image})` }}></div>
                                       <h6 className="my-2 text-dark">{item.name}</h6>
                                   </div>
                                   <Rate />

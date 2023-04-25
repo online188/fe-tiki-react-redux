@@ -48,6 +48,15 @@
                     }
                 }
             }
+
+            .home-product-item__img{
+                padding-top: 100%; /*100% của chiều ngang thẻ chứa nó Khi sử dụng backgroud-img:*/
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                border-top-left-radius: 2px;
+                border-top-right-radius: 2px;
+            }
         }
         .product--item:hover {
             box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 20px !important;

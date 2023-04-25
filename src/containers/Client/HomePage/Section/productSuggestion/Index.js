@@ -9,7 +9,7 @@ import Rate from '../Rate';
 import { useHistory } from 'react-router';
 
 const ProductSuggestion = () => {
-    const [activeTab, setActiveTab] = useState(3);
+    const [activeTab, setActiveTab] = useState(1);
     const [productShow, setProductShow] = useState([]);
     const [btnLoadMore, setLoadMore] = useState(false);
     const [resetButton, setResetButton] = useState(false);
@@ -28,7 +28,7 @@ const ProductSuggestion = () => {
 
     useEffect(() => {
         dispatch(fetchAllCategory());
-        dispatch(DetailCategory(3));
+        dispatch(DetailCategory(1));
     }, [dispatch]);
 
     //detail category
@@ -91,7 +91,8 @@ const ProductSuggestion = () => {
                                         productShow.map((item, index) => {
                                             return (
                                                 <div className="list__prod mb-3" onClick={() => viewDetail(item)} key={index}>
-                                                    <img src={item.image} className="w-75" alt="" />
+                                                    {/* <img src={item.image} className="w-75" alt="" /> */}
+                                                    <div className="home-product-item__img" style={{ backgroundImage: `url(${item.image})` }}></div>
                                                     <p className="text-secondary mt-3 mb-1">{item.name}</p>
                                                     <Rate />
 

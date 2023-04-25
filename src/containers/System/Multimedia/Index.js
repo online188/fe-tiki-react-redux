@@ -161,7 +161,7 @@ const Multimedia = (props) => {
 
                             <div className="form-group col-md-2">
                                 <label htmlFor="">Trạng thái</label>
-                                <select className="form-control" {...register('status', { required: true })}>
+                                <select className="form-control" {...register('status')}>
                                     {statusSlide?.length > 0 &&
                                         statusSlide.map((item, index) => {
                                             return (
