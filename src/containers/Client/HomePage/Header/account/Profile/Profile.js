@@ -136,7 +136,7 @@ function Profile(props) {
 
                             <select className="form-control" value={year} onChange={(e) => setYearBirth(e.target.value)}>
                                 {[...Array(50)].map((item, index) => {
-                                    return <option key={index}>{2022 - index}</option>;
+                                    return <option key={index}>{2023 - index}</option>;
                                 })}
                             </select>
                         </div>

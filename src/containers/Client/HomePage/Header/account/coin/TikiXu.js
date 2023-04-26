@@ -31,7 +31,7 @@ const TikiXu = (props) => {
                     <div className="coin-current">
                         <span>Xu đang có</span>
                         <div>
-                            100 Tiki xu sẽ hết hạn vào 30/06/2022
+                            100 Tiki xu sẽ hết hạn vào 30/06/2023
                             <i className="fas fa-angle-right ml-2"></i>
                         </div>
                     </div>

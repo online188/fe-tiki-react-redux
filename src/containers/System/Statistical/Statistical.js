@@ -9,16 +9,13 @@ const StatisticalManage = (props) => {
     return (
         <div className="report-statistical">
             <div className="report-header">
-                <img src="https://cdn-icons-png.flaticon.com/512/3309/3309960.png" style={{width: '3%'}} alt="" />
+                <img src="https://cdn-icons-png.flaticon.com/512/3309/3309960.png" style={{ width: '3%' }} alt="" />
                 <div className="reportTitle">Báo cáo lợi nhuận</div>
             </div>
-            <TabStatistical
-                activeTab={activeTab}
-                setActiveTab={setActiveTab}
-            />
+            <TabStatistical activeTab={activeTab} setActiveTab={setActiveTab} />
 
-            <TabContent activeTab={activeTab} className ="content-statistical">
-                <TabPane tabId="1" className='report-revenue'>
+            <TabContent activeTab={activeTab} className="content-statistical">
+                <TabPane tabId="1" className="report-revenue">
                     <div className="filter-report">
                         <div className="row">
                             <div className="col-4">
@@ -26,23 +23,25 @@ const StatisticalManage = (props) => {
                             </div>
                             <div className="col-2">
                                 <div className="form-group">
-                                  <input type="date" className="form-control" />
+                                    <input type="date" className="form-control" />
                                 </div>
                             </div>
                             <div className="col-2">
                                 <div className="form-group">
-                                  <input type="date" className="form-control" />
+                                    <input type="date" className="form-control" />
                                 </div>
                             </div>
 
                             <div className="col-2">
-                                <button type="button" className="btn btn-primary">Tìm</button>
+                                <button type="button" className="btn btn-primary">
+                                    Tìm
+                                </button>
                             </div>
                         </div>
                     </div>
 
                     <div className="revenueTable bg-white mt-3 p-3">
-                        <div className='list-revenue'>
+                        <div className="list-revenue">
                             <table className="table table-striped table-bordered table-hover">
                                 <thead className="text-white">
                                     <tr>
@@ -57,13 +56,13 @@ const StatisticalManage = (props) => {
                                         <td>Chênh lệch</td>
                                     </tr>
                                 </thead>
-                                
+
                                 <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td className='text-primary'>15/03/2022</td>
-                                        <td>hoang</td>
-                                        <td>vertu 2022</td>
+                                        <td className="text-primary">15/03/2023</td>
+                                        <td>nam</td>
+                                        <td>vertu 2023</td>
                                         <td>10</td>
                                         <td>10</td>
                                         <td>100.000</td>
@@ -74,13 +73,13 @@ const StatisticalManage = (props) => {
                             </table>
                         </div>
                     </div>
-                    <hr/>
+                    <hr />
                     <div className="chartSale d-flex">
-                        <div className='col-md-6  border-right'>
+                        <div className="col-md-6  border-right">
                             <h5>Số lượng đơn hàng</h5>
                             <div>updating chart...</div>
                         </div>
-                        <div className='col-md-6'>
+                        <div className="col-md-6">
                             <h5>Doanh thu</h5>
                             <div>Updating chart ...</div>
                         </div>
@@ -90,7 +89,7 @@ const StatisticalManage = (props) => {
                     <h5>Thống kê sản phẩm bán ra</h5>
                     <div className="listProductSold d-flex">
                         <div className="col-md-6 border-right">
-                        <table className="table table-striped table-bordered table-hover">
+                            <table className="table table-striped table-bordered table-hover">
                                 <thead className="text-white">
                                     <tr>
                                         <td>Tên sản phẩm</td>
@@ -99,10 +98,10 @@ const StatisticalManage = (props) => {
                                         <td>Thành tiền</td>
                                     </tr>
                                 </thead>
-                                
+
                                 <tbody>
                                     <tr>
-                                        <td>Vertu 2022</td>
+                                        <td>Vertu 2023</td>
                                         <td>10</td>
                                         <td>98.567.678 đ</td>
                                         <td>98.000.000 đ</td>
@@ -122,17 +121,16 @@ const StatisticalManage = (props) => {
                             <div>updating...</div>
                         </div>
                     </div>
-                    <hr/>
+                    <hr />
                     <h5>Sản phẩm bán chạy</h5>
                     <div>uppadting chart...</div>
-
                 </TabPane>
                 <TabPane tabId="3">
-                    <h5>Khách hàng tiềm năng</h5>   
+                    <h5>Khách hàng tiềm năng</h5>
                     <div>updating...</div>
                 </TabPane>
             </TabContent>
         </div>
     );
-}
+};
 export default StatisticalManage;
